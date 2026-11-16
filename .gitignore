@@ -1,0 +1,8 @@
+# compilación
+out/
+*.class
+
+# datos guardados por la aplicación (se generan al usarla)
+datos/sga.dat
+datos/sga.dat.tmp
+datos/sga.dat.ilegible
