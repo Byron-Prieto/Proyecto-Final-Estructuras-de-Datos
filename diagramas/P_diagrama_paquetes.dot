@@ -1,0 +1,20 @@
+digraph P_diagrama_paquetes {
+  graph [fontname="DejaVu Sans", fontsize=18, label="Arquitectura por capas — Paquetes del SGA", labelloc=t, rankdir=TB,
+         splines=true, nodesep=0.45, ranksep=0.75, pad=0.4, bgcolor="white" , nodesep=0.7, ranksep=0.9];
+  node  [shape=plain, fontname="DejaVu Sans", fontsize=10];
+  edge  [fontname="DejaVu Sans", fontsize=9, color="#444444", labeldistance=2.2, labelangle=-25];
+  node [shape=plain];
+  gui [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#FAD9C1"><TR><TD ALIGN="LEFT"><B>co.edu.uq.sga.gui</B></TD></TR><TR><TD SIDES="T" ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">Main, VentanaPrincipal, Contexto<BR ALIGN="LEFT"/>TableroPanel, ReservasPanel, CalendarioPanel,<BR ALIGN="LEFT"/>UsuarioPanel, PreparacionPanel, MapaPanel,<BR ALIGN="LEFT"/>EstadisticasPanel, AdminPanel<BR ALIGN="LEFT"/>Dialogos, Estilo, GraficoBarras, Actualizable<BR ALIGN="LEFT"/></FONT></TD></TR></TABLE>>];
+  servicio [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#FFE9B8"><TR><TD ALIGN="LEFT"><B>co.edu.uq.sga.servicio</B></TD></TR><TR><TD SIDES="T" ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">Alojamiento (fachada), Reportes, CargadorDatos<BR ALIGN="LEFT"/>SolicitudExterna, ConflictoCanal, ResultadoSolicitud<BR ALIGN="LEFT"/>EstadoNoche, RelojAjustable<BR ALIGN="LEFT"/></FONT></TD></TR></TABLE>>];
+  modelo [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#DCE6F5"><TR><TD ALIGN="LEFT"><B>co.edu.uq.sga.modelo</B></TD></TR><TR><TD SIDES="T" ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">Apartamento, Huesped, Reserva, Estancia, Ocupante<BR ALIGN="LEFT"/>Folio, Movimiento, TareaPreparacion, Empleado<BR ALIGN="LEFT"/>CalendarioTemporadas, Liquidador, LineaLiquidacion<BR ALIGN="LEFT"/>Comparadores, PoliticaCancelacion<BR ALIGN="LEFT"/>enums: EstadoApartamento, EstadoReserva, Temporada,<BR ALIGN="LEFT"/>Canal, TipoMovimiento, Rol<BR ALIGN="LEFT"/></FONT></TD></TR></TABLE>>];
+  estructuras [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#D5EFE3"><TR><TD ALIGN="LEFT"><B>co.edu.uq.sga.estructuras</B></TD></TR><TR><TD SIDES="T" ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">ListaEnlazada&lt;T&gt;, Cola&lt;T&gt;, Pila&lt;T&gt;, ColaPrioridad&lt;T&gt;<BR ALIGN="LEFT"/>ArbolBinarioBusqueda&lt;T&gt;, Grafo&lt;T&gt;, Conjunto&lt;T&gt;<BR ALIGN="LEFT"/>ListaCircular&lt;T&gt;, Ruta&lt;T&gt;<BR ALIGN="LEFT"/></FONT></TD></TR></TABLE>>];
+  excepciones [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="6" BGCOLOR="#F7D4D4"><TR><TD ALIGN="LEFT"><B>co.edu.uq.sga.excepciones</B></TD></TR><TR><TD SIDES="T" ALIGN="LEFT" BALIGN="LEFT"><FONT POINT-SIZE="10">ReservaSolapadaException, CapacidadExcedidaException<BR ALIGN="LEFT"/>FechasInvalidasException, TransicionEstadoInvalidaException<BR ALIGN="LEFT"/>EstructuraVaciaException, ApartamentoNoPreparadoException<BR ALIGN="LEFT"/></FONT></TD></TR></TABLE>>];
+  gui -> servicio [style=dashed, arrowhead=vee, label="usa"];
+  servicio -> modelo [style=dashed, arrowhead=vee, label="usa"];
+  modelo -> estructuras [style=dashed, arrowhead=vee, label="usa"];
+  servicio -> estructuras [style=dashed, arrowhead=vee];
+  gui -> modelo [style=dashed, arrowhead=vee];
+  servicio -> excepciones [style=dashed, arrowhead=vee];
+  modelo -> excepciones [style=dashed, arrowhead=vee];
+  estructuras -> excepciones [style=dashed, arrowhead=vee];
+}
